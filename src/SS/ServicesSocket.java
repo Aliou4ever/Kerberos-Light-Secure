@@ -86,7 +86,7 @@ public class ServicesSocket extends Thread {
                 
                 byte[] receive = readWrite.readObject();
                 
-                idService = "dima";//ss.getLogin();                
+                idService = ss.getLogin();                
                 
                 try {
                     storeManager = new KeyStoreManager();
@@ -121,7 +121,7 @@ public class ServicesSocket extends Thread {
 
                     DataSenderProtocol dsp = DataSenderProtocol.getSCtoA2(step2, privKeySS);
 
-                    idA = dsp.getIdB();
+                    idA = dsp.getIdA();
                     X509Certificate certA = dsp.getCert();
                     byte[] certSignA = dsp.getCertSign();
 
@@ -137,7 +137,7 @@ public class ServicesSocket extends Thread {
                     if (obj instanceof NShroederSender) {
 
                         System.out.println("==========Needham Shroeder==========");
-                        idA = "aliou";
+                        //idA = "aliou";
                         certA = storeManager.getCertInKeyStore(idService, idA);                        
                         
                         System.out.print("Challenge 1 : ");
